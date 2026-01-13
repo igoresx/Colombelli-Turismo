@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Colombelli Turismo — Roteiros</title>
+
+  <style>
+    :root {
+      --azul: #00a0df;
+      --verde: #19a974;
+      --verde-escuro: #0b7d57;
+      --fundo: #eef8f2;
+      --branco: #ffffff;
+      --texto: #333;
+      --vermelho: #e53935;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--fundo);
+      margin: 0;
+      padding: 20px;
+      color: var(--texto);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--verde);
+      margin-bottom: 30px;
+    }
+
+    h2 { color: var(--azul); margin-bottom: 15px; }
+
+    .card {
+      background: var(--branco);
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    .campo { display: flex; flex-direction: column; margin-bottom: 12px; }
+
+    label { font-weight: 600; margin-bottom: 6px; }
+
+    input, select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: var(--verde);
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    button:hover { background: var(--verde-escuro); }
+
+    .btn-danger { background: var(--vermelho); padding: 10px 14px; }
+    .btn-danger:hover { background: #c62828; }
+
+    .grid-roteiro {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .linha-passeio { display: flex; gap: 8px; align-items: center; }
+    .linha-passeio select { flex: 1; }
+
+    ul { padding-left: 18px; }
+    li { margin-bottom: 10px; }
+
+    @media (max-width: 768px) {
+      .grid-roteiro { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+<img id="logoColombelli" src="logo-colombelli.jpg" style="display:none">
+
+<h1>Colombelli Turismo — Roteiros</h1>
+
+<!-- CADASTRO DE PASSEIOS -->
+<div class="card">
+  <h2>Cadastro de Passeios</h2>
+  <div class="campo"><label>Nome do passeio</label><input id="nomePasseio" placeholder="Ex: Cataratas do Iguaçu"></div>
+  <div class="campo"><label>Valor por pessoa</label><input id="valorPasseio" type="number" placeholder="Ex: 150"></div>
+  <button onclick="salvarPasseio()">Salvar passeio</button>
+</div>
+
+<!-- MONTAGEM DO ROTEIRO -->
+<div class="card">
+  <h2>Montagem de Roteiro</h2>
+  <div class="grid-roteiro">
+    <div class="campo"><label>Data</label><input type="date" id="dataPasseio"></div>
+    <div class="campo">
+      <label>Passeio</label>
+      <div class="linha-passeio">
+        <select id="selectPasseios"></select>
+        <button class="btn-danger" onclick="apagarPasseio()" title="Excluir passeio">🗑</button>
+      </div>
+    </div>
+    <div class="campo">
+      <label>Período</label>
+      <select id="periodoPasseio">
+        <option value="">Selecione</option>
+        <option value="Manhã">Manhã</option>
+        <option value="Tarde">Tarde</option>
+        <option value="Noite">Noite</option>
+      </select>
+    </div>
+  </div>
+  <div class="campo"><label>Quantidade de pessoas</label><input id="qtdPessoas" type="number" min="1" value="1"></div>
+  <button onclick="adicionarPasseio()">Adicionar ao roteiro</button>
+</div>
+
+<!-- DESCONTOS -->
+<div class="card">
+  <h2>Descontos</h2>
+  <div class="campo"><label>Desconto (%)</label><input id="descontoPercentual" type="number" value="0" oninput="calcularTotais()"></div>
+  <div class="campo"><label>Desconto (R$)</label><input id="descontoValor" type="number" value="0" oninput="calcularTotais()"></div>
+</div>
+
+<!-- RESUMO -->
+<div class="card">
+  <h2>Itens do roteiro</h2>
+  <ul id="listaRoteiro"></ul>
+  <h2>Valor final: R$ <span id="totalFinal">0.00</span></h2>
+  <div class="campo"><label>Nome do passageiro</label><input id="nomePassageiro" placeholder="Ex: João da Silva"></div>
+  <button onclick="salvarRoteiro()">Salvar roteiro</button>
+</div>
+
+<!-- ROTEIROS SALVOS -->
+<div class="card">
+  <h2>Roteiros Salvos</h2>
+  <ul id="listaRoteirosSalvos"></ul>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

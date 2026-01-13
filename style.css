@@ -1,0 +1,21 @@
+.grid-roteiro {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+
+.grid-roteiro .campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-roteiro input,
+.grid-roteiro select {
+  width: 100% !important;
+  padding: 6px;
+}
+
+
+
+
