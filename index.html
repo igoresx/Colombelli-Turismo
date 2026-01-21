@@ -152,6 +152,148 @@
 </body>
 </html>
 
+<!-- ===================== -->
+<!-- ORDEM DE SERVIÇO -->
+<!-- ===================== -->
+<div class="card">
+  <h2>Ordem de Serviço</h2>
+
+  <div class="grid-roteiro">
+    <div class="campo">
+      <label>Data do Serviço</label>
+      <input type="date" id="osData">
+    </div>
+
+    <div class="campo">
+      <label>Nome do Guia</label>
+      <input type="text" id="osGuia" placeholder="Ex: João Silva">
+    </div>
+
+    <div class="campo">
+      <label>Veículo</label>
+      <input type="text" id="osVeiculo" placeholder="Ex: Van / Ônibus">
+    </div>
+  </div>
+
+  <div class="campo">
+    <label>Hotel</label>
+    <input type="text" id="osHotel" placeholder="Ex: Hotel Central">
+  </div>
+
+  <div class="campo">
+    <label>Contato do Titular</label>
+    <input type="text" id="osContato" placeholder="Telefone ou WhatsApp">
+  </div>
+
+  <h3>Passageiros</h3>
+
+  <table style="width:100%; border-collapse: collapse">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Data de Nascimento</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaPassageirosOS"></tbody>
+  </table>
+
+  <button type="button" onclick="adicionarPassageiroOS()" style="margin-top:10px">
+    + Adicionar Passageiro
+  </button>
+
+
+<h3 style="margin-top:20px">Passeios do Serviço</h3>
+
+<div class="linha-passeio" style="margin-bottom:10px">
+  <input 
+    type="text" 
+    id="osNomePasseio" 
+    placeholder="Nome do passeio"
+  >
+
+  <select id="osPeriodoPasseio">
+    <option value="">Turno</option>
+    <option value="Manhã">Manhã</option>
+    <option value="Tarde">Tarde</option>
+    <option value="Noite">Noite</option>
+  </select>
+
+  <button type="button" onclick="adicionarPasseioOS()">
+    Adicionar
+  </button>
+</div>
+
+<table style="width:100%; border-collapse: collapse">
+  <thead>
+    <tr>
+
+    </tr>
+  </thead>
+  <tbody id="tabelaPasseiosOS"></tbody>
+</table>
+
+
+<table style="width:100%; border-collapse: collapse">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Data de Nascimento</th>
+    </tr>
+  </thead>
+  <tbody id="tabelaPassageirosOS"></tbody>
+</table>
+
+
+
+<button onclick="visualizarOrdemServico()">Visualizar Ordem de Serviço</button>
+  <button type="button" onclick="gerarOrdemServico()">
+  Gerar Ordem de Serviço
+</button>
+
+<!-- ===================== -->
+<!-- PRÉ-VISUALIZAÇÃO OS -->
+<!-- ===================== -->
+<div class="card" id="previewOS" style="display:none">
+  <h2>Pré-visualização — Ordem de Serviço</h2>
+
+  <p style="margin-bottom:8px">
+  <strong>Data do Serviço:</strong>
+  <span id="prevData" style="margin-left:6px"></span>
+</p>
+
+  <p><strong>Guia:</strong> <span id="prevGuia"></span></p>
+  <p><strong>Veículo:</strong> <span id="prevVeiculo"></span></p>
+  <p><strong>Hotel:</strong> <span id="prevHotel"></span></p>
+  <p><strong>Contato:</strong> <span id="prevContato"></span></p>
+
+  <h3>Passageiros</h3>
+  <table style="width:100%; border-collapse: collapse">
+    <thead style="background:#19a974; color:white">
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Nascimento</th>
+      </tr>
+    </thead>
+    <tbody id="prevPassageiros"></tbody>
+  </table>
+
+  <h3 style="margin-top:15px">Passeios do Serviço</h3>
+  <table style="width:100%; border-collapse: collapse">
+    <thead style="background:#19a974; color:white">
+      <tr>
+        <th>Passeio</th>
+        <th>Turno</th>
+      </tr>
+    </thead>
+    <tbody id="prevPasseios"></tbody>
+  </table>
+</div>
+
+
 
 
 
